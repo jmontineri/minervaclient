@@ -87,7 +87,11 @@ def check_courses(courses,codes,require_all = False,require_reg = False):
 			sys.exit(MinervaError.course_not_found)
 
 		course = courses[code]
-		sys.stdout.write("[" + code + "] ")
+		sys.stdout.write("[" + code + "] \n")
+		sys.stdout.write(str(course['reg']['act']) + "/" + str(course['reg']['cap']) + " - " + str(course['reg']['rem']) + " slots free\n")
+
+		if('wait' in course):
+			sys.stdout.write("Waitlist: " + str(course['wait']['act']) + "/" + str(course['wait']['cap']) + " - " + str(course['wait']['rem']) + " slots free\n")
 
 		if course['select'] == MinervaState.possible:
 			sys.stdout.write("* Minerva permits registration ")

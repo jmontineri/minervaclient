@@ -69,7 +69,7 @@ def determine_state(record):
 def search_parse(text):
 	text = text.replace('&nbsp;',' ') # This is really dumb, but I don't want know how Python handles Unicode
 	html = BeautifulSoup(text,'html.parser')
-	table = html.body.find('table',{'summary':'This layout table is used to present the sections found'})
+	table = html.find('table',{'summary':'This layout table is used to present the sections found'})
 	tr = table.findAll('tr')[2:]
 	records = {}
 	for row in tr:
